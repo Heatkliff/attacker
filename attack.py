@@ -220,7 +220,6 @@ class FuckYouRussianShip:
                 del site
                 del log_file_main
                 del log_file_name
-                return self.mainth()
 
     @staticmethod
     def write_statistic_success(url_target, status_code):
@@ -266,7 +265,7 @@ class FuckYouRussianShip:
                 ])
                 tp.table(data=statistic_data,
                          headers=headers,
-                         width=[len(max(list(statistic.keys()), key=len)), 10, 10, 10, 10, 10, 8])            
+                         width=[len(max(list(statistic.keys()), key=len)), 10, 10, 10, 10, 10, 8])
             sleep(5)
             FuckYouRussianShip.clear()
 
@@ -280,10 +279,7 @@ def attacker_threading(threads_count, worker_func):
         for task in as_completed(future_tasks):
             while True:
                 try:
-                    status, site = task.result()
-                    del status
-                    del site
-                    break
+                    task.result()
                 except BaseException:
                     sleep(5)
 
